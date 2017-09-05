@@ -2,6 +2,10 @@
   (:require [re-frame.core :as rf]
             [clojure.string :as str]))
 
+(defn instructions []
+  [:p "Enter a 4 note chord with each note separated by spaces. "
+   "For example, a C minor 7 would be entered as: C Eb G Bb"])
+
 (defn chord-input []
   [:div
    [:input {:type "text"
@@ -19,5 +23,6 @@
   (let [chord (rf/subscribe [:chord])]
     (fn []
       [:div
+       [instructions]
        [chord-input]
        [chord-voicings]])))
